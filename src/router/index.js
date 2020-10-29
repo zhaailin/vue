@@ -4,6 +4,7 @@ import login from '../components/login.vue'
 import index from '../components/index.vue'
 import formFirst from '../components/formFirst.vue'
 import formSecond from '../components/formSecond.vue'
+import tenant from '../components/tenant.vue'
 
 Vue.use(Router)
 
@@ -20,7 +21,9 @@ export default new Router({
     {
       path: '/index',
       name: 'index',
-      component: index
+      component: index,
+      redirect:'/tenant',
+      children:[{path:'/tenant',name:'tenant',component:tenant}]
       
     }
   ]

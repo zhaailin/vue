@@ -12,7 +12,7 @@
         <div><img src="../assets/deer.png" ></div>
         <div>admin</div>
       </div>
-      <div class="endPicture"><img src="../assets/地球.png" ></div>
+      <div @click="out" class="endPicture"><img src="../assets/地球.png" ></div>
     </div>
     <div class="body">
         <div class="aside">
@@ -29,7 +29,9 @@
             </li>
          </ul>
         </div>
-        <div class="main"></div>
+        <div class="main">
+          <router-view></router-view>
+        </div>
     </div>
   </div>
 </template>
