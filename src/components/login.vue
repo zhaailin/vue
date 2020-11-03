@@ -11,9 +11,7 @@
       <div class="header">
         <img src="../assets/立秋.png" />
       </div>
-      
       <router-view></router-view>
-
       <div class="footer">
         <div>Copyright © 2020 无锡微茗智能科技有限公司</div>
         <div>苏ICP备19005118号</div>
