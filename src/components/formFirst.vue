@@ -2,15 +2,15 @@
    <div class="body">
         <div>
           <div class="inputText">
-            <div><img src="../assets/地球.png" /></div>
+            <div class="inputText-picture"><img src="../assets/地球.png" /></div>
             <input placeholder="公司" type="text" />
           </div>
           <div class="inputText">
-            <div><img src="../assets/用户.png" /></div>
+            <div class="inputText-picture"><img src="../assets/用户.png" /></div>
             <input placeholder="账户" v-model="loginform.user" type="text" />
           </div>
           <div class="inputText">
-            <div><img src="../assets/锁.png" /></div>
+            <div class="inputText-picture"><img src="../assets/锁.png" /></div>
             <input
               placeholder="密码"
               v-model="loginform.password"
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div>
-          <button @click="login">确认</button>
+          <button class="button-login" @click="login">确认</button>
         </div>
         <div>
           <span><p @click="join">免密登录</p></span>
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     login() {
-      if (this.loginform.user == "admin" && this.loginform.password == "123456")
+      if (this.loginform.user == this.$store.state.userName && this.loginform.password == this.$store.state.password)
         this.$router.push("/index");
     },
     join() {
@@ -59,9 +59,8 @@ export default {
       margin-bottom: 16px;
       border: 1px solid #5f9bc9;
       display: flex;
-
       align-items: center;
-      div {
+      .inputText-picture {
         margin-left: 10px;
         width: 5%;
       }
@@ -77,7 +76,7 @@ export default {
         outline: none;
       }
     }
-    button {
+    .button-login {
       width: 100%;
       height: 40px;
       margin-top: 15px;

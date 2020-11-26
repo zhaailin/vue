@@ -7,7 +7,9 @@
         </button>
       </div>
       <div id="search">
-        <input type="text" placeholder="关键词" v-model="input" /><button>
+        <input type="text" placeholder="关键词" v-model="input" /><button
+          @click="searchInfo"
+        >
           搜索
         </button>
       </div>
@@ -22,7 +24,11 @@
           <th>联系电话</th>
           <th>过期时间</th>
         </tr>
-        <tr :index="item.id" v-for="(item, index) in search" :key="index">
+        <tr
+          :index="item.id"
+           v-for="(item, index) in currentPageData"
+          :key="index"
+        >
           <td height="37px">
             <span @click="edit(item)">编辑</span>
             <div></div>
@@ -162,6 +168,7 @@
         </div>
       </div>
     </div>
+    <div class="cover" v-if="show || showInfo"></div>
   </div>
 </template>
 <script>
@@ -305,7 +312,7 @@ export default {
     },
     //上一页
     prevPage() {
-      console.log(this.currentPage);
+      // console.log(this.currentPage);
       if (this.currentPage == 1) return;
 
       this.currentPage--;
@@ -317,6 +324,9 @@ export default {
 
       this.currentPage++;
       this.setCurrentPageData();
+    },
+    searchInfo() {
+      this.currentPageData = this.search;
     },
   },
   computed: {
@@ -340,15 +350,18 @@ export default {
   background-color: #fff;
   height: 100%;
   margin: 0 14px;
+  border-radius: 5px;
   .contentHeader {
     height: 50px;
-    background-color: #bfbfbf;
+    background-color: #f0f2f5;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
     button {
       height: 32px;
+      justify-content: center;
+      color: #fff;
       display: flex;
       align-items: center;
       background-color: #3a7fbc;
@@ -377,6 +390,7 @@ export default {
   th {
     border: 1px solid #bfbfbf;
     font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
     div {
       position: relative;
       top: -0.06em;
@@ -396,6 +410,7 @@ export default {
     }
   }
   footer {
+    color: rgba(0, 0, 0, 0.65);
     display: flex;
     justify-content: flex-end;
   }
@@ -412,9 +427,10 @@ export default {
     position: fixed;
     bottom: 250px;
     left: 500px;
+    z-index: 100;
     .ant-modal-content {
       height: 500px;
-      background-color: #bfbfbf;
+      background-color: #fff;
       .ant-modal-content-header {
         height: 55px;
         display: flex;
@@ -430,8 +446,8 @@ export default {
         font-size: 14px;
         line-height: 1.5;
         height: 340px;
-        border-top: 1px solid #fff;
-        border-bottom: 1px solid #fff;
+        border-top: 1px solid #bfbfbf;
+        border-bottom: 1px solid #bfbfbf;
         .ant-form {
           height: 100%;
           .ant-form-item {
@@ -453,11 +469,16 @@ export default {
               width: 310px;
               padding: 4px 11px;
               height: 20px;
+              border: 1px solid #d9d9d9;
+              color: rgba(0, 0, 0, 0.65);
+              outline: none;
             }
             #select {
               width: 336px;
               height: 32px;
               padding: 4px 11px;
+              border: 1px solid #d9d9d9;
+              color: rgba(0, 0, 0, 0.65);
             }
           }
         }
@@ -474,14 +495,14 @@ export default {
           height: 32px;
         }
         #cancel {
-          background-color: #fff;
+          background-color: #bfbfbf;
           border: none;
           margin-right: 3px;
         }
         #save {
           background-color: #3a7fbc;
           margin: 15px;
-          color: #fff;
+          color: #bfbfbf;
         }
       }
     }
@@ -494,6 +515,15 @@ export default {
       height: 10px;
       margin: 0 6px;
     }
+  }
+  .cover {
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.5;
+    background-color: #000000;
+    position: fixed;
+    left: 0;
+    top: 0;
   }
 }
 </style>

@@ -2,15 +2,15 @@
    <div class="body">
         <div>
           <div class="inputText">
-            <div><img src="../assets/地球.png" /></div>
+            <div class="inputText-picture"><img src="../assets/地球.png" /></div>
             <input placeholder="公司" type="text" />
           </div>
           <div class="inputText">
-            <div><img src="../assets/手机.png" /></div>
+            <div class="inputText-picture"><img src="../assets/手机.png" /></div>
             <input placeholder="手机号"  type="text" oninput="value=value.replace(/[^\d]/g,'')"/>
           </div>
           <div class="inputText">
-            <div><img src="../assets/搜索.png" /></div>
+            <div class="inputText-picture"><img src="../assets/搜索.png" /></div>
             <input id="phone"
               placeholder="验证码"
               type="password"
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div>
-          <button @click="login">确认</button>
+          <button @click.enter="login">确认</button>
         </div>
         <div>
           <span><p @click="join">账户登录</p></span>
@@ -36,8 +36,6 @@ export default {
       this.$router.push("/formFirst");
     },
     }
-      
-    
 }
 </script>
 <style lang="less" scoped>
@@ -51,9 +49,8 @@ export default {
       margin-bottom: 16px;
       border: 1px solid #5f9bc9;
       display: flex;
-
       align-items: center;
-      div {
+      .inputText-picture {
         margin-left: 10px;
         width: 5%;
       }

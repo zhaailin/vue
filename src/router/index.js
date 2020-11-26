@@ -5,7 +5,7 @@ import index from '../components/index.vue'
 import formFirst from '../components/formFirst.vue'
 import formSecond from '../components/formSecond.vue'
 import tenant from '../components/tenant.vue'
-import hellow from '../components/hellow.vue'
+import personInfo from '../components/personInfo.vue'
 
 Vue.use(Router)
 
@@ -25,7 +25,7 @@ export default new Router({
       component: index,
       redirect:'/tenant',
       children:[{path:'/tenant',name:'tenant',component:tenant},
-                {path:'/hellow',name:'hellow',component:hellow}]
+                {path:'/personInfo',name:'personInfo',component:personInfo}]
       
     }
   ]

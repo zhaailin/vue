@@ -15,11 +15,13 @@
         <div><span>生产工艺</span></div>
       </li>
     </ul>
-    <div class="end">
-      <div><img src="../assets/deer.png" /></div>
-      <div>admin</div>
+    <div class="endList">
+      <div class="end">
+        <div><img src="../assets/deer.png" /></div>
+        <div>{{ $store.state.userName }}</div>
+      </div>
+      <img @click="out" src="../assets/地球.png" />
     </div>
-    <div @click="out" class="endPicture"><img src="../assets/地球.png" /></div>
   </div>
 </template>
 <script>
@@ -65,34 +67,38 @@ export default {
       border-bottom: 3px solid #3a7fbc;
     }
   }
-  .end {
-    height: 55px;
-    width: 150px;
+  .endList {
+    width: 106px;
+    height: 52px;
     display: flex;
     align-items: center;
-    div {
-      height: 40px;
-      width: 40px;
-      margin-right: 10px;
-      font-size: 16px;
-      color: #fff;
+    justify-content: flex-end;
+    position: fixed;
+    right: 3px;
+    .end {
+      height: 55px;
+      width: 150px;
       display: flex;
       align-items: center;
-      img {
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        border: 1px solid #fff;
+      div {
+        height: 40px;
+        width: 40px;
+        margin-right: 20px;
+        font-size: 16px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          border: 1px solid #fff;
+        }
       }
     }
-  }
-  .endPicture {
-    height: 55px;
-    display: flex;
-    align-items: center;
     img {
-      height: 25px;
       width: 25px;
+      height: 25px;
     }
   }
 }
